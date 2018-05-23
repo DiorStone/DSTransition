@@ -16,4 +16,6 @@ FOUNDATION_EXPORT const unsigned char DSTransitionVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <DSTransition/PublicHeader.h>
 
-
+#if __has_include(<DSTransition/DSTransition-Swift.h>)
+#import <DSTransition/DSTransition-Swift.h>
+#endif

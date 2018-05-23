@@ -9,6 +9,14 @@
 import UIKit
 import DSTransition
 
+class Test: PresentConfig {
+    var transitionAnimation: TransitionAnimation?
+    
+    var dismissTransitionAnimation: TransitionAnimation?
+    
+    
+}
+
 class ViewController: UIViewController {
 
     let present = Presenter()
@@ -25,7 +33,12 @@ class ViewController: UIViewController {
     }
 
     @IBAction func presentAction(_ sender: Any) {
-        present.presentViewController(presentingViewController: self, presentedViewController: ViewController1())
+        present.configer { (configer: Test) in
+        }
+        let vc = ViewController1()
+        vc.transitioningDelegate = present
+        vc.modalPresentationStyle = .custom
+        self.present(vc, animated: true, completion: nil)
     }
 
 }

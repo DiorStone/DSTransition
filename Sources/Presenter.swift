@@ -6,24 +6,52 @@
 
 import UIKit
 
-
-public class Presenter: NSObject {
+@objc(BocoPresentConfig)
+open class PresentConfig: NSObject {
+    /// 显示动画
+    var transitionAnimation: TransitionAnimation?
+    /// 隐藏动画
+    var dismissTransitionAnimation: TransitionAnimation?
     
-    public var presentAnimation: TransitionAnimation = TransitionAnimation()
-    public var dismissAnimation: TransitionAnimation = TransitionAnimation()
-    
-    public override init() {}
-    
-    public func presentViewController(presentingViewController presentingVC: UIViewController,
-                                      presentedViewController presentedVC: UIViewController,
-                                      animated: Bool = true,
-                                      completion: (() -> Void)? = nil) {
-        presentedVC.transitioningDelegate = self
-        presentedVC.modalPresentationStyle = .custom
-        presentingVC.present(presentedVC, animated: animated, completion: completion)
+    public override required init() {
+        super.init()
     }
 }
 
+/// Present配置类
+@objc(BocoPresenter)
+public class Presenter: NSObject {
+    
+    public var transitionType: TransitionType? {
+        didSet {
+            transitionAnimation = transitionType?.animation()
+        }
+    }
+    public var dismissTransitionType: TransitionType? {
+        didSet {
+            transitionAnimation = transitionType?.animation()
+        }
+    }
+    
+    @objc public var configer: PresentConfig?
+    /// 显示动画
+    @objc public var transitionAnimation: TransitionAnimation?
+    
+    /// 隐藏动画
+    @objc public var dismissTransitionAnimation: TransitionAnimation?
+    
+    /// 背景色
+    @objc public var backgroundColor: UIColor = UIColor.black.withAlphaComponent(0.7)
+    
+    public override init() {}
+    
+    public func configer<T: PresentConfig>(_ setting: ((_ config: T) -> Void) = {_ in}){
+        self.configer = T()
+        setting(self.configer as! T)
+    }
+}
+
+//MARK: UIViewControllerTransitioningDelegate
 extension Presenter: UIViewControllerTransitioningDelegate {
     
     public func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
@@ -31,10 +59,12 @@ extension Presenter: UIViewControllerTransitioningDelegate {
     }
     
     public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return presentAnimation
+        transitionAnimation?.isPositiveAnimation = true
+        return transitionAnimation
     }
     
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return dismissAnimation
+        transitionAnimation?.isPositiveAnimation = false
+        return dismissTransitionAnimation
     }
 }

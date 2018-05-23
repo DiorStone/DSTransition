@@ -8,9 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		AB7ECA0B20B3C0050065BA11 /* DSTransition.h in Headers */ = {isa = PBXBuildFile; fileRef = AB7ECA0520B3C0050065BA11 /* DSTransition.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AB7ECA1120B3C0630065BA11 /* TransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7ECA1020B3C0630065BA11 /* TransitionAnimation.swift */; };
 		AB7ECA1320B3E80E0065BA11 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7ECA1220B3E80E0065BA11 /* PresentationController.swift */; };
 		AB7ECA1520B3E87E0065BA11 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7ECA1420B3E87E0065BA11 /* Presenter.swift */; };
+		AB81115C20B4FE1300D39C0A /* ModalSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB81115920B4FE1100D39C0A /* ModalSize.swift */; };
+		AB81115D20B4FE1300D39C0A /* PresentationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB81115A20B4FE1200D39C0A /* PresentationType.swift */; };
+		AB81115E20B4FE1300D39C0A /* ModalCenterPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB81115B20B4FE1200D39C0A /* ModalCenterPosition.swift */; };
+		AB81116020B516E100D39C0A /* TransitionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB81115F20B516E100D39C0A /* TransitionType.swift */; };
+		ABCBBBDE20B53EEA00C78865 /* TransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCBBBDD20B53EEA00C78865 /* TransitionAnimation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,9 +25,13 @@
 		AB7ECA0720B3C0050065BA11 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		AB7ECA0820B3C0050065BA11 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		AB7ECA0920B3C0050065BA11 /* DSTransition.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DSTransition.podspec; sourceTree = "<group>"; };
-		AB7ECA1020B3C0630065BA11 /* TransitionAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionAnimation.swift; sourceTree = "<group>"; };
 		AB7ECA1220B3E80E0065BA11 /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
 		AB7ECA1420B3E87E0065BA11 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
+		AB81115920B4FE1100D39C0A /* ModalSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalSize.swift; sourceTree = "<group>"; };
+		AB81115A20B4FE1200D39C0A /* PresentationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationType.swift; sourceTree = "<group>"; };
+		AB81115B20B4FE1200D39C0A /* ModalCenterPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalCenterPosition.swift; sourceTree = "<group>"; };
+		AB81115F20B516E100D39C0A /* TransitionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionType.swift; sourceTree = "<group>"; };
+		ABCBBBDD20B53EEA00C78865 /* TransitionAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionAnimation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,12 +69,24 @@
 			isa = PBXGroup;
 			children = (
 				AB7ECA0520B3C0050065BA11 /* DSTransition.h */,
+				AB81115B20B4FE1200D39C0A /* ModalCenterPosition.swift */,
+				AB81115920B4FE1100D39C0A /* ModalSize.swift */,
+				AB81115A20B4FE1200D39C0A /* PresentationType.swift */,
+				AB81115F20B516E100D39C0A /* TransitionType.swift */,
 				AB7ECA1420B3E87E0065BA11 /* Presenter.swift */,
-				AB7ECA1020B3C0630065BA11 /* TransitionAnimation.swift */,
 				AB7ECA1220B3E80E0065BA11 /* PresentationController.swift */,
+				ABCBBBDC20B53EEA00C78865 /* Transitions */,
 				AB7ECA0620B3C0050065BA11 /* Info.plist */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		ABCBBBDC20B53EEA00C78865 /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				ABCBBBDD20B53EEA00C78865 /* TransitionAnimation.swift */,
+			);
+			path = Transitions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,8 +169,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB7ECA1520B3E87E0065BA11 /* Presenter.swift in Sources */,
-				AB7ECA1120B3C0630065BA11 /* TransitionAnimation.swift in Sources */,
+				AB81115E20B4FE1300D39C0A /* ModalCenterPosition.swift in Sources */,
+				AB81116020B516E100D39C0A /* TransitionType.swift in Sources */,
+				AB81115C20B4FE1300D39C0A /* ModalSize.swift in Sources */,
 				AB7ECA1320B3E80E0065BA11 /* PresentationController.swift in Sources */,
+				AB81115D20B4FE1300D39C0A /* PresentationType.swift in Sources */,
+				ABCBBBDE20B53EEA00C78865 /* TransitionAnimation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
